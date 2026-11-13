@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {"tool-cli": "./dist/cli.js"},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx cli.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "cli": "tool-cli"
   },
   "keywords": [],
   "author": "",
