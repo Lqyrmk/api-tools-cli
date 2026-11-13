@@ -8,7 +8,7 @@ import type { Album, Comment, Photo, Post, Todo, User } from "../src/types.js"
 
 const { values, positionals } = parseArgs({
     options: {
-        desc: { type: "string", short: "d", default: "GET" },
+        desc: { type: "string", short: "d" },
         help: { type: "boolean", short: "h" },
     },
     allowPositionals: true,
@@ -18,6 +18,7 @@ const { values, positionals } = parseArgs({
 
 const description = values.desc;
 const [command, rawId] = positionals;
+console.log('positionals :>> ', positionals);
 
 const helpInfo = `
 Usage: tool-cli [options] <command> <rawId>
@@ -92,47 +93,48 @@ function handle_result<T>(result: z.ZodSafeParseResult<T>): void {
     }
 }
 
+const start = description === undefined ? "GET API" : description
 
 try {
     if (command === "posts") {
 
         let userId = id;
-        console.log(`API: /${command}?userId=${userId}`)
+        console.log(`${start}:\n/${command}?userId=${userId}`)
         const postsResult = await getPosts(userId);
         handle_result<Post[]>(postsResult);
 
     } else if (command === "comments") {
 
         let postId = id;
-        console.log(`API: /${command}?postId=${postId}`)
+        console.log(`${start}:\n/${command}?postId=${postId}`)
         const commentsResult = await getComments(postId);
         handle_result<Comment[]>(commentsResult);
 
     } else if (command === "albums") {
 
         let userId = id;
-        console.log(`API: /${command}?userId=${userId}`)
+        console.log(`${start}:\n/${command}?userId=${userId}`)
         const albumsResult = await getAlbums(userId);
         handle_result<Album[]>(albumsResult);
 
     } else if (command === "photos") {
 
         let albumId = id;
-        console.log(`API: /${command}?albumId=${albumId}`)
+        console.log(`${start}:\n/${command}?albumId=${albumId}`)
         const photosResult = await getPhotos(albumId);
         handle_result<Photo[]>(photosResult);
 
     } else if (command === "todos") {
 
         let userId = id;
-        console.log(`API: /${command}?userId=${userId}`)
+        console.log(`${start}:\n/${command}?userId=${userId}`)
         const todosResult = await getTodos(userId);
         handle_result<Todo[]>(todosResult);
 
     } else if (command === "user") {
 
         let userId = id;
-        console.log(`API: /${command}/${userId}`)
+        console.log(`${start}:\n/${command}/${userId}`)
         const userResult = await getUser(userId);
         handle_result<User>(userResult);
 
