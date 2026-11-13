@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin": {"tool-cli": "./dist/cli.js"},
+  "bin": {
+    "tool-cli": "./dist/cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx cli.ts",
@@ -15,12 +17,12 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "tsx": "^4.23.15"
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
   },
   "dependencies": {
-    "@types/node": "^26.6.6",
-    "typescript": "^7.0.2",
-    "vitest": "^5.1.0",
     "zod": "^4.6.7"
   }
 }
