@@ -3,13 +3,6 @@ import { request } from "./http.js"
 import { PostSchema, CommentSchema, AlbumSchema, PhotoSchema, TodoSchema, UserSchema } from "./schemas.js"
 import type { z } from "zod";
 
-// if (result.success) {
-//     const user = result.data;
-//     console.log("### post data: \n", user);
-// } else {
-//     const fieldErrors = z.flattenError(result.error).fieldErrors;
-//     console.log("### fieldErrors: \n", fieldErrors);
-// }
 
 export async function getPosts(
     userId: number

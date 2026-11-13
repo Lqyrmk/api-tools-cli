@@ -57,13 +57,3 @@ export type User = {
         bs: string
     }
 }
-
-export type ApiError =
-  | { kind: "network"; message: string }
-  | { kind: "http"; status: number }
-  | { kind: "parse"; message: string }
-  | { kind: "validation"; message: string }
-
-export type Result<T> =
-  | { ok: true; data: T}
-  | { ok: false; error: ApiError}
